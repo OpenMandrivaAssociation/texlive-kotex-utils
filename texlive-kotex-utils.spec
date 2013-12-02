@@ -6,7 +6,7 @@
 # catalog-version 2.0.1
 Name:		texlive-kotex-utils
 Version:	2.0.1
-Release:	1
+Release:	2
 Summary:	Utility scripts and support files for typesetting Korean
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/language/korean/kotex-utils
@@ -18,7 +18,7 @@ BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
 Requires(post):	texlive-kpathsea
 Requires:	texlive-kotex-utf
-Requires:	texlive-kotex-utils.bin
+Provides:	texlive-kotex-utils.bin = %{EVRD}
 
 %description
 The bundle provides scripts and support files for index
@@ -35,6 +35,9 @@ the ko.TeX bundle.
 
 #-----------------------------------------------------------------------
 %files
+%{_bindir}/jamo-normalize
+%{_bindir}/komkindex
+%{_bindir}/ttf2kotexfont
 %{_texmfdistdir}/makeindex/kotex-utils/kotex.ist
 %{_texmfdistdir}/makeindex/kotex-utils/memucs-manual.ist
 %{_texmfdistdir}/scripts/kotex-utils/jamo-normalize.pl
@@ -52,5 +55,11 @@ the ko.TeX bundle.
 %build
 
 %install
+mkdir -p %{buildroot}%{_bindir}
+pushd %{buildroot}%{_bindir}
+    ln -sf ../share/texmf-dist/scripts/kotex-utils/jamo-normalize.pl jamo-normalize
+    ln -sf ../share/texmf-dist/scripts/kotex-utils/komkindex.pl komkindex
+    ln -sf ../share/texmf-dist/scripts/kotex-utils/ttf2kotexfont.pl ttf2kotexfont
+popd
 mkdir -p %{buildroot}%{_datadir}
 cp -fpar texmf-dist %{buildroot}%{_datadir}
