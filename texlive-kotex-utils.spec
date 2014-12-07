@@ -6,7 +6,7 @@
 # catalog-version 2.0.1
 Name:		texlive-kotex-utils
 Version:	2.0.1
-Release:	8
+Release:	9
 Summary:	Utility scripts and support files for typesetting Korean
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/language/korean/kotex-utils
