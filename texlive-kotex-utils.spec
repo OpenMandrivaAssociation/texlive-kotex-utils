@@ -1,9 +1,3 @@
-# revision 32101
-# category Package
-# catalog-ctan /language/korean/kotex-utils
-# catalog-date 2013-11-08 09:28:00 +0100
-# catalog-license lppl
-# catalog-version 2.0.1
 Name:		texlive-kotex-utils
 Version:	2.1.0
 Release:	1
@@ -38,15 +32,9 @@ the ko.TeX bundle.
 %{_bindir}/jamo-normalize
 %{_bindir}/komkindex
 %{_bindir}/ttf2kotexfont
-%{_texmfdistdir}/makeindex/kotex-utils/kotex.ist
-%{_texmfdistdir}/makeindex/kotex-utils/memucs-manual.ist
-%{_texmfdistdir}/scripts/kotex-utils/jamo-normalize.pl
-%{_texmfdistdir}/scripts/kotex-utils/komkindex.pl
-%{_texmfdistdir}/scripts/kotex-utils/ttf2kotexfont.pl
-%doc %{_texmfdistdir}/doc/latex/kotex-utils/ChangeLog
-%doc %{_texmfdistdir}/doc/latex/kotex-utils/README
-%doc %{_texmfdistdir}/doc/latex/kotex-utils/utf8-lang.xdy
-%doc %{_texmfdistdir}/doc/latex/kotex-utils/utf8.xdy
+%{_texmfdistdir}/makeindex/kotex-utils
+%{_texmfdistdir}/scripts/kotex-utils
+%doc %{_texmfdistdir}/doc/latex/kotex-utils
 
 #-----------------------------------------------------------------------
 %prep
