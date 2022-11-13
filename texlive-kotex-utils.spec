@@ -1,12 +1,12 @@
 Name:		texlive-kotex-utils
-Version:	2.1.0
-Release:	2
+Version:	38727
+Release:	1
 Summary:	Utility scripts and support files for typesetting Korean
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/language/korean/kotex-utils
 License:	LPPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/kotex-utils.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/kotex-utils.doc.tar.xz
+Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/kotex-utils.r%{version}.tar.xz
+Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/kotex-utils.doc.r%{version}.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
@@ -20,12 +20,12 @@ generation in Korean language typesetting. The files belong to
 the ko.TeX bundle.
 
 %post
-    %{_sbindir}/texlive.post
+%{_sbindir}/texlive.post
 
 %postun
-    if [ $1 -eq 0 ]; then
+if [ $1 -eq 0 ]; then
 	%{_sbindir}/texlive.post
-    fi
+fi
 
 #-----------------------------------------------------------------------
 %files
@@ -38,16 +38,16 @@ the ko.TeX bundle.
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0 -a1
+%autosetup -p1 -c -a1
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_bindir}
 pushd %{buildroot}%{_bindir}
-    ln -sf ../share/texmf-dist/scripts/kotex-utils/jamo-normalize.pl jamo-normalize
-    ln -sf ../share/texmf-dist/scripts/kotex-utils/komkindex.pl komkindex
-    ln -sf ../share/texmf-dist/scripts/kotex-utils/ttf2kotexfont.pl ttf2kotexfont
+ln -sf ../share/texmf-dist/scripts/kotex-utils/jamo-normalize.pl jamo-normalize
+ln -sf ../share/texmf-dist/scripts/kotex-utils/komkindex.pl komkindex
+ln -sf ../share/texmf-dist/scripts/kotex-utils/ttf2kotexfont.pl ttf2kotexfont
 popd
 mkdir -p %{buildroot}%{_datadir}
 cp -fpar texmf-dist %{buildroot}%{_datadir}
