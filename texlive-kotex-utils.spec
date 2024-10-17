@@ -3,7 +3,7 @@ Version:	38727
 Release:	2
 Summary:	Utility scripts and support files for typesetting Korean
 Group:		Publishing
-URL:		http://www.ctan.org/tex-archive/language/korean/kotex-utils
+URL:		https://www.ctan.org/tex-archive/language/korean/kotex-utils
 License:	LPPL
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/kotex-utils.r%{version}.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/kotex-utils.doc.r%{version}.tar.xz
