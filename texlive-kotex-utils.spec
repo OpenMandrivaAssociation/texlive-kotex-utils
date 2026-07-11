@@ -1,53 +1,23 @@
-Name:		texlive-kotex-utils
-Version:	38727
-Release:	2
+%global tl_name kotex-utils
+%global tl_revision 79618
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	2.1.0
+Release:	%{tl_revision}.1
 Summary:	Utility scripts and support files for typesetting Korean
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/language/korean/kotex-utils
-License:	LPPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/kotex-utils.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/kotex-utils.doc.r%{version}.tar.xz
+License:	lppl1.3c
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/kotex-utils.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/kotex-utils.doc.r%{tl_revision}.tar.xz
 BuildArch:	noarch
-BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
-Requires:	texlive-kotex-utf
-Provides:	texlive-kotex-utils.bin = %{EVRD}
+BuildSystem:	texlive
+Requires:	texlive(kotex-utf)
+Requires:	texlive(kotex-utils.bin)
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-The bundle provides scripts and support files for index
-generation in Korean language typesetting. The files belong to
-the ko.TeX bundle.
+The bundle provides scripts and support files for index generation in
+Korean language typesetting. The files belong to the ko.TeX bundle.
 
-%post
-%{_sbindir}/texlive.post
-
-%postun
-if [ $1 -eq 0 ]; then
-	%{_sbindir}/texlive.post
-fi
-
-#-----------------------------------------------------------------------
-%files
-%{_bindir}/jamo-normalize
-%{_bindir}/komkindex
-%{_bindir}/ttf2kotexfont
-%{_texmfdistdir}/makeindex/kotex-utils
-%{_texmfdistdir}/scripts/kotex-utils
-%doc %{_texmfdistdir}/doc/latex/kotex-utils
-
-#-----------------------------------------------------------------------
-%prep
-%autosetup -p1 -c -a1
-
-%build
-
-%install
-mkdir -p %{buildroot}%{_bindir}
-pushd %{buildroot}%{_bindir}
-ln -sf ../share/texmf-dist/scripts/kotex-utils/jamo-normalize.pl jamo-normalize
-ln -sf ../share/texmf-dist/scripts/kotex-utils/komkindex.pl komkindex
-ln -sf ../share/texmf-dist/scripts/kotex-utils/ttf2kotexfont.pl ttf2kotexfont
-popd
-mkdir -p %{buildroot}%{_datadir}
-cp -fpar texmf-dist %{buildroot}%{_datadir}
