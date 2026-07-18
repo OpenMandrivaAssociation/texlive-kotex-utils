@@ -1,5 +1,6 @@
 %global tl_name kotex-utils
 %global tl_revision 79618
+%global tl_bin_links jamo-normalize:%{_texmfdistdir}/scripts/kotex-utils/jamo-normalize.pl komkindex:%{_texmfdistdir}/scripts/kotex-utils/komkindex.pl ttf2kotexfont:%{_texmfdistdir}/scripts/kotex-utils/ttf2kotexfont.pl
 
 Name:		texlive-%{tl_name}
 Epoch:		1
@@ -16,6 +17,8 @@ BuildSystem:	texlive
 Requires:	texlive(kotex-utf)
 Requires:	texlive(kotex-utils.bin)
 Provides:	texlive(%{tl_name}) = %{tl_revision}
+Provides:	texlive(%{tl_name}.bin) = %{tl_revision}
+Provides:	texlive-%{tl_name}.bin = %{EVRD}
 
 %description
 The bundle provides scripts and support files for index generation in
